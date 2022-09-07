@@ -9,3 +9,8 @@ The necessary arguments for the main() function are 1) [key], and 2) [sequence],
 
   The system is powered by an array of pitch tables and a larger disambiguating dictionary. Values are chosen for the dictionary randomly using melody.rand2d6(), an emulation of a roll of two six-sided dice, so as to create a bell curve distribution. Once a value is chosen from the dictionary, that value is used to access the corresponding index value of the pitch table array. Once a pitch table is selected, a pitch is randomly selected from that table to be played next. 
   More tables can be added, but currently the three pitch tables contain the pitches for 1) the current chord, 2) the scale pitches adjacent to the current pitch, and 3) the entire scale. Roll weight is meant to decrease with each subsequent entry.
+
+Contents:
+  melody.py:  Main script
+  a440.py:    Array of chromatic pitches in Hz, tuned to A=440.
+
