@@ -11,6 +11,7 @@ The necessary arguments for the main() function are 1) [key], and 2) [sequence],
   More tables can be added, but currently the three pitch tables contain the pitches for 1) the current chord, 2) the scale pitches adjacent to the current pitch, and 3) the entire scale. Roll weight is meant to decrease with each subsequent entry.
 
 Contents:
+  
   melody.py:  Main script
   
   a440.py:    Array of chromatic pitches in Hz, tuned to A=440.
