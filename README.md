@@ -12,5 +12,6 @@ The necessary arguments for the main() function are 1) [key], and 2) [sequence],
 
 Contents:
   melody.py:  Main script
+  
   a440.py:    Array of chromatic pitches in Hz, tuned to A=440.
 
