@@ -8,9 +8,22 @@ The necessary arguments for the main() function are 1) [key], and 2) [sequence],
     * A couple defaults are included in the script, namely melody.seqC and melody.seqCminor.
 
   The system is powered by an array of pitch tables and a larger disambiguating dictionary. Values are chosen for the dictionary randomly using melody.rand2d6(), an emulation of a roll of two six-sided dice, so as to create a bell curve distribution. Once a value is chosen from the dictionary, that value is used to access the corresponding index value of the pitch table array. Once a pitch table is selected, a pitch is randomly selected from that table to be played next. 
-  More tables can be added, but currently the three pitch tables contain the pitches for 1) the current chord, 2) the scale pitches adjacent to the current pitch, and 3) the entire scale. Roll weight is meant to decrease with each subsequent entry.
-
-Contents:
+  More tables can be added, but currently the three pitch tables contain the pitches for 1) the current chord, 2) the scale pitches adjacent to the current pitch, and 3) the entire scale. The disambiguating dictionary is accessed after a simulation of the rolling of two dice, each with six sides (hereafter denoted as "2d6"). This creates a natural bell-curve with the most-frequent result of 7. The closer to 7 the result lies, the more frequently they occur. The most improbable results are 2 and 12. Here is the default spread:
+    [2d6]   [Next Table]
+     2        Full Scale
+     3        Full Scale
+     4        Adjacent Pitches
+     5        Adjacent Pitches
+     6        Chordal Pitches
+     7        Chordal Pitches
+     8        Chordal Pitches
+     9        Adjacent Pitches
+     10       Adjacent Pitches
+     11       Full Scale
+     12       Full Scale
+  The rhythmic aspects of the machine are still limited. Line 164 provides a method of eliminating the monotony a bit by simply not playing a certain percentage of the pitches produced. This creates a feeling of pseudo-phrasing that can sound quite musical. The value can be adjusted to preference.
+  
+  Contents:
   
   melody.py:  Main script
   
