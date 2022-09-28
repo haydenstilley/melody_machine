@@ -11,48 +11,6 @@ import a440
 ## LIMITATION 2: The engine has little capability to create musical phrases, as it scantly references previously played pitches while picking a new pitch, and has no system for remembering motifs. A Markov-based generation system may be helpful, but would need several layers of complexity to be effective.
 ## LIMITATION 3: As the engine essentially keeps no track of previously played pitches, the scope of the melody is locked to a 1-octave range to keep it from meandering too far from home.
 
-## Primary array of available pitches. Contains a chromatic scale from C4 to B6.
-stage = [a440.C4,
-    a440.C_SHARP4,
-    a440.D4,
-    a440.D_SHARP4,
-    a440.E4,
-    a440.F4,
-    a440.F_SHARP4,
-    a440.G4,
-    a440.G_SHARP4,
-    a440.A4,
-    a440.A_SHARP4,
-    a440.B4,
-    a440.C5,
-    a440.C_SHARP5,
-    a440.D5,
-    a440.D_SHARP5,
-    a440.E5,
-    a440.F5,
-    a440.F_SHARP5,
-    a440.G5,
-    a440.G_SHARP5,
-    a440.A5,
-    a440.A_SHARP5,
-    a440.B5,
-    a440.C6,
-    a440.C_SHARP6,
-    a440.D6,
-    a440.D_SHARP6,
-    a440.E6,
-    a440.F6,
-    a440.F_SHARP6,
-    a440.G6,
-    a440.G_SHARP6,
-    a440.A6,
-    a440.A_SHARP6,
-    a440.B6]
-
-## Default scale orientations. First is C Major - Ionian, second is C Minor - Aeolian.
-scale = [2,2,1,2,2,2]
-minorScale = [2,1,2,2,1,2]
-
 ## Establishes melodic framework. 'root' is a numerical value corresponding with an index value in [stage]. There are still limitations.
 ## LIMITATION 1: Only one octave range
 ## LIMITATION 2: No ability to change key (though this is more intrinsic to the code and requires a little rewrite).
@@ -66,19 +24,11 @@ def key(stage, root, scale, sequence):
     chords = sequence[2]
     keyOut = [key1,chords]
     return keyOut
-    
 
 ## Establishes sequence of musical piece. Tempo is a numerical value in seconds.
 def sequence(meter,bars,chords,tempo):
     seqOut = [meter,bars,chords,tempo]
     return seqOut
-
-## Default sequences and keys. First set is C Major - Ionian, second set is C Minor - Aeolian.
-seqC = sequence(4,4,[a440.CMAJOR,a440.GMAJOR,a440.AMINOR,a440.FMAJOR],0.5)
-keyCmajor = key(stage,0,scale,seqC)
-
-seqCminor = sequence(8,4,[a440.CMINOR,a440.FMINOR,a440.CMINOR,a440.GMAJOR],0.2)
-keyCminor = key(stage,0,minorScale,seqCminor)
 
 ## Sets initial pitch tables.
 def setTables(key,position=2):
@@ -92,21 +42,6 @@ def setTables(key,position=2):
     t3 = key[0] ## full scale
     tables = [t1,t2,t3]
     return tables
-
-## Dictionary to facilitate randomly picking a pitch table produced by setTables().
-metaTable = {
-    "2": 2,
-    "3": 2,
-    "4": 1,
-    "5": 1,
-    "6": 0,
-    "7": 0,
-    "8": 0,
-    "9": 1,
-    "10": 1,
-    "11": 2,
-    "12": 2
-}
 
 ## Randomizer emulating a roll of two six-sided dice
 def rand2d6():
@@ -130,8 +65,73 @@ def pickPitch(_tables, _tIndex):
     pitch = random.randint(0,(len(subTable)-1))
     return _tables[_tIndex][pitch]
 
+class Parameters:
+    ## Default scale orientations. First is C Major - Ionian, second is C Minor - Aeolian.
+    scale = [2,2,1,2,2,2]
+    minorScale = [2,1,2,2,1,2]
+    ## Primary array of available pitches. Contains a chromatic scale from C4 to B6.
+    stage = [a440.C4,
+        a440.C_SHARP4,
+        a440.D4,
+        a440.D_SHARP4,
+        a440.E4,
+        a440.F4,
+        a440.F_SHARP4,
+        a440.G4,
+        a440.G_SHARP4,
+        a440.A4,
+        a440.A_SHARP4,
+        a440.B4,
+        a440.C5,
+        a440.C_SHARP5,
+        a440.D5,
+        a440.D_SHARP5,
+        a440.E5,
+        a440.F5,
+        a440.F_SHARP5,
+        a440.G5,
+        a440.G_SHARP5,
+        a440.A5,
+        a440.A_SHARP5,
+        a440.B5,
+        a440.C6,
+        a440.C_SHARP6,
+        a440.D6,
+        a440.D_SHARP6,
+        a440.E6,
+        a440.F6,
+        a440.F_SHARP6,
+        a440.G6,
+        a440.G_SHARP6,
+        a440.A6,
+        a440.A_SHARP6,
+        a440.B6]
+        
+    ## Default sequences and keys. First set is C Major - Ionian, second set is C Minor - Aeolian.
+    seqC = sequence(4,4,[a440.CMAJOR,a440.GMAJOR,a440.AMINOR,a440.FMAJOR],0.5)
+    keyCmajor = key(stage,0,scale,seqC)
+
+    seqCminor = sequence(8,4,[a440.CMINOR,a440.FMINOR,a440.CMINOR,a440.GMAJOR],0.2)
+    keyCminor = key(stage,0,minorScale,seqCminor)
+    
+    ## Dictionary to facilitate randomly picking a pitch table produced by setTables().
+    metaTable = {
+        "2": 2,
+        "3": 2,
+        "4": 1,
+        "5": 1,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 1,
+        "10": 1,
+        "11": 2,
+        "12": 2
+    }
+
 ## Main function. Default chord progression is i-iv-i-V in C Minor.
-def main(sequence=seqCminor, key=keyCminor):
+def main(sequence=Parameters.seqCminor, key=Parameters.keyCminor):
+    defaults = Parameters()
     s = Server().boot()
     s.start()
     run1 = True
@@ -145,7 +145,7 @@ def main(sequence=seqCminor, key=keyCminor):
                 if needle[0] > sequence[0]:
                     needle[0] = 0
                 print(needle[0])
-                pitch = (pickPitch(tables,pickTable(metaTable)))
+                pitch = (pickPitch(tables,pickTable(defaults.metaTable)))
                 if (rand100()>.4): ## Makes it so that 60% of the beats will have a new pitch, and the remaining 40% will hold the pitch of the previous beat. Adjustable to preference.
                     _sine = Sine(freq=pitch).out() ## _sine is the object that produces sound.
                 print(pitch)
