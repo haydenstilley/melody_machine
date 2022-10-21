@@ -107,11 +107,25 @@ class Parameters:
         a440.A_SHARP6,
         a440.B6]
         
-    ## Default sequences and keys. First set is C Major - Ionian, second set is C Minor - Aeolian.
-    seqC = sequence(4,4,[a440.CMAJOR,a440.GMAJOR,a440.AMINOR,a440.FMAJOR],0.5)
+    ## Default sequences and keys. 
+    
+    ## C Major (Ionian). Key is listed after default progressions in that key.
+    ## I V vi IV
+    seqC = sequence(8,4,[a440.CMAJOR,a440.GMAJOR,a440.AMINOR,a440.FMAJOR],0.2)
+    ## IV V iii vi (Koakuma)
+    seqCk = sequence(8,4,[a440.FMAJOR,a440.GMAJOR,a440.EMINOR,a440.AMINOR],0.2)
+    ## ii V I (Turnaround)
+    seqCt = sequence(8,4,[a440.DMINOR,a440.GMAJOR,a440.CMAJOR,a440.CMAJOR],0.2)
+    ## I iv IV V (50's)
+    seqCf = sequence(8,4,[a440.CMAJOR,a440.AMINOR,a440.FMAJOR,a440.GMAJOR],0.2)
+    ## The Killing Moon (Echo and The Bunnymen)
+    seqCecho = sequence(8,4,[a440.CMAJOR,a440.FMINOR,a440.CMAJOR,a440.FMINOR],0.3)
     keyCmajor = key(stage,0,scale,seqC)
-
+    
+    ## C Minor (Aeolian)
+    ## i iv i V (Minor Blues / Django Chords)
     seqCminor = sequence(8,4,[a440.CMINOR,a440.FMINOR,a440.CMINOR,a440.GMAJOR],0.2)
+    
     keyCminor = key(stage,0,minorScale,seqCminor)
     
     ## Dictionary to facilitate randomly picking a pitch table produced by setTables().
@@ -128,6 +142,12 @@ class Parameters:
         "11": 2,
         "12": 2
     }
+    ## Defaults
+    dMeter = seqCminor[1]
+    dChords = seqCminor[2]
+    dLoops = 4
+    dMeasures = seqCminor[0]
+    dTempo = [3]
 
 ## Main function. Default chord progression is i-iv-i-V in C Minor.
 def main(sequence=Parameters.seqCminor, key=Parameters.keyCminor):
@@ -135,7 +155,7 @@ def main(sequence=Parameters.seqCminor, key=Parameters.keyCminor):
     s = Server().boot()
     s.start()
     run1 = True
-    ## parameters for needle are: beat [0], measure [1], bar [2], and chord [3].
+    ## parameters for needle are: beat [0], measure [1], current loop [2], and chord [3].
     needle = [1,1,1,sequence[2][0]]
     tables = setTables(key)
     while (run1 == True):
