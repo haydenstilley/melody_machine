@@ -182,7 +182,6 @@ def main(sequence=Parameters.seqCminor, key=Parameters.keyCminor):
                     if (i==pitch):
                         tables = setTables(key,needle[3],tick)
                         tflag += 1
-                        print("TABLES RESET")
                     tick += 1
                 if (tflag<1):
                     tables = setTables(key,needle[3],-1)
