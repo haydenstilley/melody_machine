@@ -9,7 +9,7 @@ The necessary arguments for the main() function are 1) [key], and 2) [sequence],
 
   The system is powered by an array of pitch tables and a larger disambiguating dictionary. Values are chosen for the dictionary randomly using melody.rand2d6(). Once a value is chosen from the dictionary, that value is used to access the corresponding index value of the pitch table array. Once a pitch table is selected, a pitch is randomly selected from that table to be played next. 
   
-  More tables can be added, but currently the three pitch tables contain the pitches for 1) the current chord, 2) the scale pitches adjacent to the current pitch, and 3) the entire scale. The disambiguating dictionary is accessed after a simulation of the rolling of two dice, each with six sides (hereafter denoted as "2d6"). This creates a natural bell-curve with the most-frequent result of 7. The closer to 7 the result lies, the more frequently it occurs. The most improbable results are 2 and 12. Here is the default spread:
+  More tables can be added, but currently the three pitch tables contain the pitches for 0) the current chord, 1) the scale pitches adjacent to the current pitch, and 2) the entire scale. The disambiguating dictionary is accessed after a simulation of the rolling of two dice, each with six sides (hereafter denoted as "2d6"). This creates a natural bell-curve with the most-frequent result of 7. The closer to 7 the result lies, the more frequently it occurs. The most improbable results are 2 and 12. Here is the default spread:
   
     [2d6]   [Next Table]
     
@@ -36,6 +36,10 @@ The necessary arguments for the main() function are 1) [key], and 2) [sequence],
      12       Full Scale
      
   The rhythmic aspects of the machine are still limited. Line 164 provides a method of eliminating the monotony a bit by simply not playing a certain percentage of the pitches produced. This creates a feeling of pseudo-phrasing that can sound quite musical. The value can be adjusted to preference.
+  
+  Depending on the chords within the piece, different orientations for [metatable] may be useful. Musical pieces that remain relatively diatonic will see little to no issues, but pieces with many chords outside of the scale will benefit from widening the [Chordal Pitches] category to include the [5] and [9] keys.
+  
+  Demo footage was created using the current version of MM and an accompaniment on acoustic guitar, played by me :)
   
   Contents:
   
