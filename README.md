@@ -11,27 +11,27 @@
 
 [2d6]   [Next Table]
 
-  2        Full Scale
+  2         Full Scale
  
-  3        Full Scale
+  3         Full Scale
  
-  4        Adjacent Pitches
+  4         Adjacent Pitches
  
-  5        Adjacent Pitches
+  5         Adjacent Pitches
  
-  6        Chordal Pitches
+  6         Chordal Pitches
  
-  7        Chordal Pitches
+  7         Chordal Pitches
  
-  8        Chordal Pitches
+  8         Chordal Pitches
  
-  9        Adjacent Pitches
+  9         Adjacent Pitches
  
-  10       Adjacent Pitches
+  10        Adjacent Pitches
  
-  11       Full Scale
+  11        Full Scale
  
-  12       Full Scale
+  12        Full Scale
  
 The rhythmic aspects of the machine are still limited. Line 164 provides a method of eliminating the monotony a bit by simply not playing a certain percentage of the pitches produced. This creates a feeling of pseudo-phrasing that can sound quite musical. The value can be adjusted to preference.
 
