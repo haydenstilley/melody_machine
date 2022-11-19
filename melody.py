@@ -32,7 +32,7 @@ def sequence(meter,bars,chords,tempo):
     return seqOut
 
 ## Sets initial pitch tables.
-## TODO: [key] is ultimately unecessary for this function and should be replaced with [sequence].
+## TODO: [key] is ultimately unecessary for this function and could be replaced with [sequence].
 def setTables(key,chord,position=2):
     t1 = chord ## current chord
     if (position<0):
@@ -116,24 +116,31 @@ class Parameters:
     
     ## C Major (Ionian). Key is listed after default progressions in that key.
     ## I V vi IV
-    seqC = sequence(8,4,[a440.CMAJOR,a440.GMAJOR,a440.AMINOR,a440.FMAJOR],0.2)
+    seqC = sequence(8,4,[a440.CMAJOR,a440.GMAJOR,a440.AMINOR,a440.FMAJOR],0.3)
     ## IV V iii vi (Koakuma)
-    seqCk = sequence(8,4,[a440.FMAJOR,a440.GMAJOR,a440.EMINOR,a440.AMINOR],0.2)
+    seqCk = sequence(8,4,[a440.FMAJOR,a440.GMAJOR,a440.EMINOR,a440.AMINOR],0.3)
     ## ii V I (Turnaround)
-    seqCt = sequence(8,4,[a440.DMINOR,a440.GMAJOR,a440.CMAJOR,a440.CMAJOR],0.2)
+    seqCt = sequence(8,4,[a440.DMINOR,a440.GMAJOR,a440.CMAJOR,a440.CMAJOR],0.3)
     ## I iv IV V (50's)
-    seqCf = sequence(8,4,[a440.CMAJOR,a440.AMINOR,a440.FMAJOR,a440.GMAJOR],0.2)
-    ## The Killing Moon - Echo and The Bunnymen (Major scales w/Minor iv)
+    seqCf = sequence(6,4,[a440.CMAJOR,a440.AMINOR,a440.FMAJOR,a440.GMAJOR],0.3)
+    ## The Killing Moon (refrain) - Echo and The Bunnymen (Major scales w/Minor iv)
     seqCecho = sequence(8,4,[a440.CMAJOR,a440.FMINOR,a440.CMAJOR,a440.FMINOR],0.3)
     keyCmajor = key(stage,0,scale,seqC)
     
+    ## D Major 
     ## Canon in D - Pachelbel (I V vi iii IV I IV V)
     seqPach = sequence(4,4,[a440.DMAJOR,a440.AMAJOR,a440.BMINOR,a440.FS_MINOR,a440.GMAJOR,a440.DMAJOR,a440.GMAJOR,a440.AMAJOR],0.2)
     keyDmajor = key(stage,2,scale,seqPach)
     
-    ## C Minor (Aeolian)
+    ## B Minor
+    ## Hotel California (verse) - The Eagles
+    seqEagle = sequence(8,8,[a440.BMINOR,a440.FS_MAJOR,a440.AMAJOR,a440.EMAJOR,a440.GMAJOR,a440.DMAJOR,a440.EMINOR,a440.FS_MAJOR],0.2)
+    keyBminor = key(stage,11,minorScale,seqEagle)
+
+    
+    ## C Minor
     ## i iv i V (Minor Blues / Django Chords)
-    seqCminor = sequence(4,4,[a440.CMINOR,a440.FMINOR,a440.CMINOR,a440.GMAJOR],0.2)
+    seqCminor = sequence(8,4,[a440.CMINOR,a440.FMINOR,a440.CMINOR,a440.GMAJOR],0.2)
     
     keyCminor = key(stage,0,minorScale,seqCminor)
     
@@ -151,12 +158,6 @@ class Parameters:
         "11": 2,
         "12": 2
     }
-    ## Defaults
-    dMeter = seqCminor[1]
-    dChords = seqCminor[2]
-    dLoops = 4
-    dMeasures = seqCminor[0]
-    dTempo = [3]
 
 ## Main function. Default chord progression is i-iv-i-V in C Minor.
 def main(sequence=Parameters.seqCminor, key=Parameters.keyCminor):
@@ -205,7 +206,7 @@ def main(sequence=Parameters.seqCminor, key=Parameters.keyCminor):
             needle[1] = (measure1+1)
 
         needle[2] += 1
-        if needle[2] > 4: ## song length arbitrarily set to 4 loops.
+        if needle[2] > 8: ## song length arbitrarily set to 8 loops.
             run1 = False
             break
     s.stop()
