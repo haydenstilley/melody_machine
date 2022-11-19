@@ -35,7 +35,7 @@ The necessary arguments for the main() function are 1) [key], and 2) [sequence],
      
      12       Full Scale
      
-  The rhythmic aspects of the machine are still limited. Line 164 provides a method of eliminating the monotony a bit by simply not playing a certain percentage of the pitches produced. This creates a feeling of pseudo-phrasing that can sound quite musical. The value can be adjusted to preference.
+  The rhythmic aspects of the machine are still limited. Line 198 provides a method of eliminating the monotony a bit by simply not playing a certain percentage of the pitches produced. This creates a feeling of pseudo-phrasing that can sound quite musical. The value can be adjusted to preference.
   
   Depending on the chords within the piece, different orientations for [metatable] may be useful. Musical pieces that remain relatively diatonic will see little to no issues, but pieces with many chords outside of the scale will benefit from widening the [Chordal Pitches] category to include the [5] and [9] keys.
   
