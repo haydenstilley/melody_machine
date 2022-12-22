@@ -1,4 +1,7 @@
 # melody_machine
+
+NOTE: The information in this README is deprecated. A new README will be available soon!
+
 An RNG-based system that, given a set of musical chords and a diatonic key, will produce "improvised" melodies that harmonize with the piece. All pitches are represented by their values in Hz, rounded to the hundredth place. Pyo must be installed for sound synthesis to function.
 
 The necessary arguments for the main() function are 1) [key], and 2) [sequence], further defined below.
