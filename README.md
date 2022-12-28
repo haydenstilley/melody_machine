@@ -8,12 +8,16 @@ The necessary objects for the primary function are: [Tonic], [Scale], [ChordSequ
 
   [Tonic]: The tonal center of the piece. Stores a string denoting the note name and the note's value in Hz.
 
+    Tonic:
+    
     Constructor method: components.Tonic(name, hz)
     
     Example: components.Tonic('A', 440) -> Tonic of A
     
     
   [Scale]: A tuple of integers corresponding to the intervals of each step/degree of the scale to be used.
+    
+    Scale:
     
     Two defaults are provided: definitions.scales['major'], and definitions.scales['minor'].
     
@@ -23,6 +27,8 @@ The necessary objects for the primary function are: [Tonic], [Scale], [ChordSequ
     
     
   [ChordSequence]: Builds a chord progression based on construction arguments.
+    
+    ChordSequence:
     
     Constructor method: components.ChordSequence(scale, scale_degrees, modifications=None)
       
@@ -52,6 +58,8 @@ The necessary objects for the primary function are: [Tonic], [Scale], [ChordSequ
         
         
   [Meter]: Sets specifications of timing and meter upon construction.
+    
+    Meter:
     
     Constructor method: components.Meter(beats, measures, bars, beat_duration=0.3)
       
