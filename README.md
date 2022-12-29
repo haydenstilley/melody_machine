@@ -104,7 +104,15 @@ The necessary objects for the primary function are: [Tonic], [Scale], [ChordSequ
   
   Depending on the chords within the piece, different orientations for definitions.metaTable may be useful. Musical pieces that remain relatively diatonic will see little to no issues, but pieces with many chords outside of the scale may benefit from widening the [Chordal Pitches] values to include the [5] and [9] keys.
   
-  Demo footage was created using the launch version of MM and an accompaniment on acoustic guitar, played by me :)
+  Demonstrations:
+  
+  https://www.youtube.com/watch?v=NCNs9Wc-5C4
+    
+  https://www.youtube.com/watch?v=I-hX8eILiWE
+    
+  https://www.youtube.com/watch?v=3XlQ4detFCQ
+  
+  *Demo footage was created using the launch version of MM and an accompaniment on acoustic guitar, played by me :)
   
   Contents:
   
